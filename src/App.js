@@ -3,7 +3,7 @@ import reducer, {initialState} from './reducers/index'
 import './App.css';
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
-import {applyNumber,applyOp,clear} from './actions/index'
+import {applyNumber,applyOp,clear,mPlus,mR,mClear} from './actions/index'
 
 function App() {
   const [state,dispatch] = useReducer(reducer, initialState);
@@ -28,6 +28,20 @@ function App() {
     dispatch(clear(clearing));
   }
 
+  const applyMplus = (plus) => {
+    dispatch(mPlus(plus));
+  }
+
+  const applyMR = (r) => {
+    dispatch(mR(r));
+  }
+
+  const applyMClear = (clear) => {
+    dispatch(mClear(clear));
+  }
+
+
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -45,9 +59,9 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton  value={"M+"} onClick={() => {applyOpClick("M+")}}/>
-              <CalcButton value={"MR"} onClick={() => {applyOpClick("MR")}}/>
-              <CalcButton value={"MC"} onClick={() => {applyOpClick("MC")}}/>
+              <CalcButton  value={"M+"} onClick={() => {applyMplus("M+")}}/>
+              <CalcButton value={"MR"} onClick={() => {applyMR("MR")}}/>
+              <CalcButton value={"MC"} onClick={() => {applyMClear("MC")}}/>
             </div>
 
             <div className="row">
